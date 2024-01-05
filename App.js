@@ -1,22 +1,61 @@
 import React from "react";
-import ReactDOM  from "react-dom/client";
+import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div",     { id: "parent" },      [React.createElement("div",   { id: "child" },  [React.createElement("h1", { id: "h11" }, "This is h1 tag"),
-        React.createElement("h2", { id: "h22" },
-            "This is h2 tag")
-        ]
-    ),
-    React.createElement("div",
-        { id: "child2" },
-        [React.createElement("h1", { id: "h11" },
-            "This is h1 tag"),
-        React.createElement("h2", { id: "h22" },
-            "This is h2 tag !!!")
-        ]
-    )],
+// JSX - is not HTML in JS. It has similar syntax like HTML
+// React Element
+const heading = (
+  <h1 className="root" tabIndex="1">
+    Namaste React using jsx
+  </h1>
 );
 
+//React Component
+// There are two types of component
+// 1 : Class Based components - OLD style of writing code
+// 2: Functional Components - New way of writing code
 
-//const heading = React.createElement("h1", {id: "heading"}, "Hello World from React");
+// React Functional Component
+
+const HeadingComponentWithReturn = () => {
+  return (
+    <div id="container">
+      <h1 className="root" tabIndex="1">
+        Namaste React functional compoment jsx
+      </h1>
+    </div>
+  );
+};
+
+const elem = <span> This is a react element in span </span>;
+// *Both these components are same.
+// *If there is only on statement then no need to give {} and the return statement
+const Title = () => (
+  <h1 className="head" tabIndex="1">
+    Namaste React Title Component
+  </h1>
+);
+
+const jsfunc = (
+  <h1 className="f1" tabIndex="2">
+    {elem}
+    Namaste React Normal js function using jsx
+  </h1>
+);
+const number = 10000;
+
+// *Component composition - Having one or more component inside one component
+const HeadingComponent = () => (
+  <div id="container">
+    {jsfunc}
+    {Title()}
+    <Title></Title>
+    <Title />
+    <h1 className="root" tabIndex="1">
+      Namaste React functional compoment jsx
+    </h1>
+  </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);  
+
+root.render(<HeadingComponent />);
